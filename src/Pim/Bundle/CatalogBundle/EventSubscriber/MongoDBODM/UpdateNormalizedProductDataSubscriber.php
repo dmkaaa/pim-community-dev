@@ -79,7 +79,11 @@ class UpdateNormalizedProductDataSubscriber implements EventSubscriber
      */
     public function postFlush(PostFlushEventArgs $args)
     {
-        $this->executeQueries();
+        if (!empty($this->scheduledQueries)) {
+            $this->executeQueries();
+
+            $this->scheduledQueries = [];
+        }
     }
 
     /**
