@@ -831,3 +831,7 @@ Pim_mass_edit:
     input: Télécharger le fichier lu
     invalid_xlsx: Télécharger les données invalides
     invalid_csv: Télécharger les données invalides
+
+pim_menu:
+    tab:
+        collect: Collecter
