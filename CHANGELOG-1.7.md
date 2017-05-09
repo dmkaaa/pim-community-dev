@@ -11,6 +11,7 @@
 - PIM-6381: Fix `Delete` button is visible on channel create screen
 - PIM-6398: Fix Summernote (WYSIWYG) style (backport GITHUB-6101 into 1.7)
 - PIM-6402: Clean attribute properties according to new validation rules during migration
+- PIM-6394: Fix email validation when creating a user in order to be less restrictive
 
 # 1.7.3 (2017-04-14)
 
