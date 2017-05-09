@@ -593,8 +593,8 @@ class AssertionContext extends RawMinkContext
     public function iOpenTheNotificationPanel()
     {
         $notificationWidget = $this->spin(function () {
-            return $this->getCurrentPage()->find('css', '#header-notification-widget');
-        }, 'Cannot find "#header-notification-widget" notification panel');
+            return $this->getCurrentPage()->find('css', '.AknHeader-rightMenus .notification');
+        }, 'Cannot find the link to the notification widget');
 
         if ($notificationWidget->hasClass('open')) {
             return;
@@ -643,8 +643,8 @@ class AssertionContext extends RawMinkContext
         $this->iOpenTheNotificationPanel();
 
         $notificationWidget = $this->spin(function () {
-            return $this->getCurrentPage()->find('css', '#header-notification-widget');
-        }, 'Cannot find "#header-notification-widget" notification widget');
+            return $this->getCurrentPage()->find('css', '.AknHeader-rightMenus .notification');
+        }, 'Cannot find the link to the notification widget');
 
         $icons = [
             'success' => 'icon-ok',

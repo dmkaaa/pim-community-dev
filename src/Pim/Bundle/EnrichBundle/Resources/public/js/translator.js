@@ -1,15 +1,12 @@
-define(['module', 'underscore', 'translator', 'json'],
-function (module, _, Translator) {
+define(['module', 'underscore', 'translator', 'pim/user-context', 'json'],
+function (module, _, Translator, UserContext) {
     'use strict';
 
-    var messages = module.config().messages || '{}';
     var dict = {};
     var debug = false;
     var add = Translator.add;
     var get = Translator.get;
     var fromJSON = Translator.fromJSON;
-
-    Translator.fromJSON(JSON.parse(messages));
 
     Translator.placeHolderPrefix = '{{ ';
     Translator.placeHolderSuffix = ' }}';

@@ -7,7 +7,7 @@ define([
         'underscore',
         'pim/fetcher-registry',
         'pim/init',
-        'oro/init-user',
+        'pim/init-translator',
         'oro/init-layout',
         'pimuser/js/init-signin',
         'pim/router',
@@ -19,7 +19,7 @@ define([
         _,
         FetcherRegistry,
         init,
-        initUser,
+        initTranslator,
         initLayout,
         initSignin
     ) {
@@ -27,23 +27,23 @@ define([
         return {
             debug: false,
             bootstrap: function (options) {
-                initUser();
                 initLayout();
                 initSignin();
                 this.debug = !!options.debug;
 
-                FetcherRegistry.initialize().then(function () {
-                    messenger.setup({
-                        container: '#flash-messages .flash-messages-holder',
-                        template: _.template($.trim($('#message-item-template').html()))
+                $.when(FetcherRegistry.initialize(), initTranslator.fetch())
+                    .then(function () {
+                        messenger.setup({
+                            container: '#flash-messages .flash-messages-holder',
+                            template: _.template($.trim($('#message-item-template').html()))
+                        });
+
+                        init();
+
+                        if (!Backbone.History.started) {
+                            Backbone.history.start();
+                        }
                     });
-
-                    init();
-
-                    if (!Backbone.History.started) {
-                        Backbone.history.start();
-                    }
-                });
             }
         };
     })();
